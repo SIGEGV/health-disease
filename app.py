@@ -6,7 +6,7 @@ from flask_cors import CORS
 
 
 # Load the model
-model = pickle.load(open('C:\Users\hp\Desktop\my\ExtraTrees.pkl', 'rb'))
+model = pickle.load(open('./ExtraTrees.pkl', 'rb'))
 
 # Define the symptoms
 diseases = [
@@ -27,7 +27,9 @@ print(len(symptoms))
 desc=pd.read_csv("disease-symptom-description-dataset/symptom_Description.csv")
 prec=pd.read_csv("disease-symptom-description-dataset/symptom_precaution.csv")
 app = Flask(__name__)
-CORS(app)
+
+CORS(app, origins='http://localhost:5000')
+
 
 @app.route('/', methods=["GET"])
 def home():
